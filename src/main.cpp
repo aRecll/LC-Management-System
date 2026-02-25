@@ -109,9 +109,9 @@ int main() {
 
     clear_screen();
     print_header("ВЫХОД ИЗ ПРОГРАММЫ");
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     std::cout << "Спасибо за использование программы!" << endl;
-    reset_сolor();
+    reset_color();
 
     return 0;
 }

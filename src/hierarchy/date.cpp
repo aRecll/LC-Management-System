@@ -110,7 +110,7 @@ std::istream& operator>>(std::istream& is, date& dt)
 		// Восстанавливаем состояние и очищаем буфер
 		is.clear(original_state);
 		is.setstate(std::ios::failbit);
-		is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		is.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
 		throw; // Пробрасываем исключение БЕЗ вывода сообщения
 	}
 }

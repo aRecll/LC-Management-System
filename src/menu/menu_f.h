@@ -30,9 +30,9 @@ enum ConsoleColors {
     BRIGHT_WHITE = 15
 };
 using namespace std;
-void set_ñolor(int textColor, int bgColor = BLACK);
+void set_color(int textColor, int bgColor = BLACK);
 
-void reset_ñolor();
+void reset_color();
 
 void print_header(const string& title);
 

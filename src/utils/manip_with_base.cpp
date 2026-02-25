@@ -5,9 +5,9 @@ void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppli
     print_header("ПОИСК ПОСТАВЩИКОВ ПО НАЗВАНИЮ (ДИНАМИЧЕСКИЙ МАССИВ)");
 
     string searchName;
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "Введите название фирмы для поиска: ";
-    reset_сolor();
+    reset_color();
     //cin.ignore();
     getline(cin, searchName);
 
@@ -20,9 +20,9 @@ void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppli
     }
 
     if (foundSuppliers.empty()) {
-        set_сolor(BRIGHT_YELLOW);
+        set_color(BRIGHT_YELLOW);
         cout << "Поставщики не найдены." << endl;
-        reset_сolor();
+        reset_color();
     }
     else {
         
@@ -31,18 +31,18 @@ void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppli
             dynamicArray[i] = *foundSuppliers[i]; // Используем оператор присваивания
         }
 
-        set_сolor(BRIGHT_GREEN);
+        set_color(BRIGHT_GREEN);
         cout << "\nНайдено поставщиков: " << foundSuppliers.size() << endl;
         cout << "Динамический массив создан с использованием оператора присваивания" << endl;
-        reset_сolor();
+        reset_color();
 
         
-        set_сolor(BRIGHT_CYAN);
+        set_color(BRIGHT_CYAN);
         cout << "\n=== ДИНАМИЧЕСКИЙ МАССИВ ПОСТАВЩИКОВ ===" << endl;
-        reset_сolor();
+        reset_color();
 
         for (size_t i = 0; i < foundSuppliers.size(); ++i) {
-            set_сolor(WHITE);
+            set_color(WHITE);
             cout << i + 1 << ". ";
             dynamicArray[i].output();
             cout << endl;
@@ -51,9 +51,9 @@ void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppli
         delete[] dynamicArray;
     }
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -66,9 +66,9 @@ void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipme
         cin.clear();
         //cin.ignore((numeric_limits<streamsize>::max)(), '\n');
 
-        set_сolor(BRIGHT_YELLOW);
+        set_color(BRIGHT_YELLOW);
         cout << "Введите дату для поиска (день месяц год): ";
-        reset_сolor();
+        reset_color();
 
         date searchDate;
         if (!(cin >> searchDate)) {
@@ -90,11 +90,11 @@ void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipme
         }
 
         if (foundShipments.empty()) {
-            set_сolor(BRIGHT_YELLOW);
+            set_color(BRIGHT_YELLOW);
             cout << "Поставки не найдены для даты: ";
             searchDate.output();
             cout << endl;
-            reset_сolor();
+            reset_color();
         }
         else {
             
@@ -103,18 +103,18 @@ void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipme
                 dynamicArray[i] = *foundShipments[i];
             }
 
-            set_сolor(BRIGHT_GREEN);
+            set_color(BRIGHT_GREEN);
             cout << "\nНайдено поставок: " << foundShipments.size() << endl;
             cout << "Динамический массив создан с использованием оператора присваивания" << endl;
-            reset_сolor();
+            reset_color();
 
             
-            set_сolor(BRIGHT_CYAN);
+            set_color(BRIGHT_CYAN);
             cout << "\n=== ДИНАМИЧЕСКИЙ МАССИВ ПОСТАВОК ===" << endl;
-            reset_сolor();
+            reset_color();
 
             for (size_t i = 0; i < foundShipments.size(); ++i) {
-                set_сolor(WHITE);
+                set_color(WHITE);
                 cout << i + 1 << ". ";
                 dynamicArray[i].output();
                 cout << endl;
@@ -128,14 +128,14 @@ void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipme
         cin.clear();
         cin.ignore((numeric_limits<streamsize>::max)(), '\n');
 
-        set_сolor(BRIGHT_RED);
+        set_color(BRIGHT_RED);
         cout << "Ошибка ввода даты: " << e.what() << endl;
-        reset_сolor();
+        reset_color();
     }
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -148,9 +148,9 @@ void demo_operators() {
         cin.clear();
         //cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
 
-        set_сolor(BRIGHT_CYAN);
+        set_color(BRIGHT_CYAN);
         cout << "=== Демонстрация оператора >> для supplier ===" << endl;
-        reset_сolor();
+        reset_color();
 
         supplier s1;
         cin >> s1;
@@ -158,46 +158,46 @@ void demo_operators() {
         // Очищаем буфер между вводами
         //cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
 
-        set_сolor(BRIGHT_CYAN);
+        set_color(BRIGHT_CYAN);
         cout << "\n=== Демонстрация оператора >> для shipment ===" << endl;
-        reset_сolor();
+        reset_color();
 
         shipment sh1;
         cin >> sh1;
 
-        set_сolor(BRIGHT_CYAN);
+        set_color(BRIGHT_CYAN);
         cout << "\n=== Демонстрация оператора = для supplier ===" << endl;
-        reset_сolor();
+        reset_color();
 
         supplier s2 = s1;
         cout << "Создан копия поставщика: ";
         s2.output();
 
-        set_сolor(BRIGHT_CYAN);
+        set_color(BRIGHT_CYAN);
         cout << "\n=== Демонстрация оператора = для shipment ===" << endl;
-        reset_сolor();
+        reset_color();
 
         shipment sh2 = sh1;
         cout << "Создана копия поставки: ";
         sh2.output();
 
-        set_сolor(BRIGHT_GREEN);
+        set_color(BRIGHT_GREEN);
         cout << "\n\nДемонстрация операторов завершена успешно!" << endl;
-        reset_сolor();
+        reset_color();
     }
     catch (const exception& e) {
         
         cin.clear();
         cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
 
-        set_сolor(BRIGHT_RED);
+        set_color(BRIGHT_RED);
         cout << " Ошибка при демонстрации операторов: " << e.what() << endl;
-        reset_сolor();
+        reset_color();
     }
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -225,22 +225,22 @@ void search_by_company_name(const vector<unique_ptr<supplier>>& suppliers,
     print_header("ПОИСК ПО НАЗВАНИЮ ФИРМЫ");
 
     string searchName;
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "Введите название фирмы для поиска: ";
-    reset_сolor();
+    reset_color();
     cin.ignore();
     getline(cin, searchName);
 
     bool found = false;
 
     
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     cout << "\n=== РЕЗУЛЬТАТЫ ПОИСКА В ПОСТАВЩИКАХ ===" << endl;
-    reset_сolor();
+    reset_color();
 
     for (const auto& supp : suppliers) {
         if (supp->get_company_name() == searchName) {
-            set_сolor(WHITE);
+            set_color(WHITE);
             cout << " Фирма: " << supp->get_company_name()
                 << ", Контракт: " << supp->get_contract_amount()
                 << ", Оплачено: " << supp->get_paid_amount()
@@ -249,19 +249,19 @@ void search_by_company_name(const vector<unique_ptr<supplier>>& suppliers,
         }
     }
     if (!found) {
-        set_сolor(BRIGHT_YELLOW);
+        set_color(BRIGHT_YELLOW);
         cout << "Поставщики не найдены." << endl;
     }
 
     found = false;
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     cout << "\n=== РЕЗУЛЬТАТЫ ПОИСКА В ПОСТАВКАХ ===" << endl;
-    reset_сolor();
+    reset_color();
 
     for (const auto& ship : shipments) {
         if (ship->get_company_name().find(searchName) != string::npos) {
             date dt = ship->get_delivery_date();
-            set_сolor(WHITE);
+            set_color(WHITE);
             cout << " Фирма: " << ship->get_company_name()
                 << ", Дата: " << dt.getDay() << "." << dt.getMonth() << "." << dt.getYear()
                 << ", Поставка: " << ship->get_supply_amount()
@@ -271,15 +271,15 @@ void search_by_company_name(const vector<unique_ptr<supplier>>& suppliers,
         }
     }
     if (!found) {
-        set_сolor(BRIGHT_YELLOW);
+        set_color(BRIGHT_YELLOW);
         cout << "Поставки не найдены." << endl;
     }
 
-    reset_сolor();
+    reset_color();
     cout << "\n";
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "Нажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -289,9 +289,9 @@ void sort_suppliers_by_balance(vector<unique_ptr<supplier>>& suppliers) {
         [](const unique_ptr<supplier>& a, const unique_ptr<supplier>& b) {
             return a->get_balance() > b->get_balance();
         });
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     cout << "- Поставщики отсортированы по сальдо (по убыванию)." << endl;
-    reset_сolor();
+    reset_color();
 }
 
 void sort_shipments_by_date(vector<unique_ptr<shipment>>& shipments) {
@@ -309,9 +309,9 @@ void sort_shipments_by_date(vector<unique_ptr<shipment>>& shipments) {
 
             return dtA.getDay() > dtB.getDay();
         });
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     cout << "- Поставки отсортированы по дате (по убыванию)." << endl;
-    reset_сolor();
+    reset_color();
 }
 
 
@@ -324,31 +324,31 @@ void add_new_suppliers(vector<unique_ptr<supplier>>& suppliers) {
 
     
     while (!valid_input) {
-        set_сolor(BRIGHT_YELLOW);
+        set_color(BRIGHT_YELLOW);
         cout << "Сколько новых поставщиков добавить? ";
-        reset_сolor();
+        reset_color();
 
         cin >> count;
 
         if (cin.fail()) {
-            set_сolor(BRIGHT_RED);
+            set_color(BRIGHT_RED);
             cout << " Ошибка: введите целое число!" << endl;
-            reset_сolor();
+            reset_color();
 
             cin.clear();
             cin.ignore((numeric_limits<streamsize>::max)(), '\n');
         }
         else if (count < 0) {
-            set_сolor(BRIGHT_RED);
+            set_color(BRIGHT_RED);
             cout << " Ошибка: количество не может быть отрицательным!" << endl;
-            reset_сolor();
+            reset_color();
 
             cin.ignore((numeric_limits<streamsize>::max)(), '\n');
         }
         else if (count > 100) {
-            set_сolor(BRIGHT_YELLOW);
+            set_color(BRIGHT_YELLOW);
             cout << "  Предупреждение: вы хотите добавить " << count << " поставщиков. Продолжить? (y/n): ";
-            reset_сolor();
+            reset_color();
 
             char confirm;
             cin >> confirm;
@@ -371,9 +371,9 @@ void add_new_suppliers(vector<unique_ptr<supplier>>& suppliers) {
 
     for (int i = 0; i < count; ++i) {
         try {
-            set_сolor(BRIGHT_CYAN);
+            set_color(BRIGHT_CYAN);
             cout << "\n=== ДОБАВЛЕНИЕ ПОСТАВЩИКА " << i + 1 << " ===" << endl;
-            reset_сolor();
+            reset_color();
 
             auto newSupplier = make_unique<supplier>();
             cin >> *newSupplier;
@@ -382,10 +382,10 @@ void add_new_suppliers(vector<unique_ptr<supplier>>& suppliers) {
 
         }
         catch (const exception& e) {
-            set_сolor(BRIGHT_RED);
+            set_color(BRIGHT_RED);
             cout << " Ошибка при добавлении поставщика " << i + 1 << ": " << e.what() << endl;
             cout << " Пропускаем этого поставщика..." << endl;
-            reset_сolor();
+            reset_color();
 
             
             cin.clear();
@@ -393,9 +393,9 @@ void add_new_suppliers(vector<unique_ptr<supplier>>& suppliers) {
 
             
             if (i < count - 1) {
-                set_сolor(BRIGHT_YELLOW);
+                set_color(BRIGHT_YELLOW);
                 cout << "Продолжить добавление оставшихся " << (count - i - 1) << " поставщиков? (y/n): ";
-                reset_сolor();
+                reset_color();
 
                 char choice;
                 cin >> choice;
@@ -408,13 +408,13 @@ void add_new_suppliers(vector<unique_ptr<supplier>>& suppliers) {
         }
     }
 
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     cout << "\n Успешно добавлено " << successfully_added << " из " << count << " новых поставщиков." << endl;
-    reset_сolor();
+    reset_color();
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -427,31 +427,31 @@ void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
 
     
     while (!valid_input) {
-        set_сolor(BRIGHT_YELLOW);
+        set_color(BRIGHT_YELLOW);
         cout << "Сколько новых поставок добавить? ";
-        reset_сolor();
+        reset_color();
 
         cin >> count;
 
         if (cin.fail()) {
-            set_сolor(BRIGHT_RED);
+            set_color(BRIGHT_RED);
             cout << " Ошибка: введите целое число!" << endl;
-            reset_сolor();
+            reset_color();
 
             cin.clear();
             cin.ignore((numeric_limits<streamsize>::max)(), '\n');
         }
         else if (count < 0) {
-            set_сolor(BRIGHT_RED);
+            set_color(BRIGHT_RED);
             cout <<"Ошибка: количество не может быть отрицательным!" << endl;
-            reset_сolor();
+            reset_color();
 
             cin.ignore((numeric_limits<streamsize>::max)(), '\n');
         }
         else if (count > 50) {
-            set_сolor(BRIGHT_YELLOW);
+            set_color(BRIGHT_YELLOW);
             cout << "  Предупреждение: вы хотите добавить " << count << " поставок. Продолжить? (y/n): ";
-            reset_сolor();
+            reset_color();
 
             char confirm;
             cin >> confirm;
@@ -474,9 +474,9 @@ void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
 
     for (int i = 0; i < count; ++i) {
         try {
-            set_сolor(BRIGHT_CYAN);
+            set_color(BRIGHT_CYAN);
             cout << "\n=== ДОБАВЛЕНИЕ ПОСТАВКИ " << i + 1 << " ===" << endl;
-            reset_сolor();
+            reset_color();
 
             auto newShipment = make_unique<shipment>();
             cin>>*newShipment;
@@ -485,10 +485,10 @@ void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
 
         }
         catch (const exception& e) {
-            set_сolor(BRIGHT_RED);
+            set_color(BRIGHT_RED);
             cout << " Ошибка при добавлении поставки " << i + 1 << ": " << e.what() << endl;
             cout << " Пропускаем эту поставку..." << endl;
-            reset_сolor();
+            reset_color();
 
             
             cin.clear();
@@ -496,9 +496,9 @@ void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
 
             
             if (i < count - 1) {
-                set_сolor(BRIGHT_YELLOW);
+                set_color(BRIGHT_YELLOW);
                 cout << "Продолжить добавление оставшихся " << (count - i - 1) << " поставок? (y/n): ";
-                reset_сolor();
+                reset_color();
 
                 char choice;
                 cin >> choice;
@@ -511,13 +511,13 @@ void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
         }
     }
 
-    set_сolor(BRIGHT_GREEN);
+    set_color(BRIGHT_GREEN);
     cout << "\n Успешно добавлено " << successfully_added << " из " << count << " новых поставок." << endl;
-    reset_сolor();
+    reset_color();
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -531,9 +531,9 @@ void perform_sorting(vector<unique_ptr<supplier>>& suppliers,
     sort_suppliers_by_balance(suppliers);
     sort_shipments_by_date(shipments);
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
 
@@ -545,8 +545,8 @@ void save_all_data(const vector<unique_ptr<supplier>>& suppliers,
     save_suppliers_to_file(suppliers);
     save_shipments_to_file(shipments);
 
-    set_сolor(BRIGHT_YELLOW);
+    set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
-    reset_сolor();
+    reset_color();
     _getch();
 }
