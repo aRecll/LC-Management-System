@@ -1,4 +1,5 @@
 #include "date.h"
+#include <limits>
 
 
 
@@ -16,7 +17,7 @@ bool date::isValidDate(int d, int m, int y) const {
 
 date::date(int d, int m, int y) {
 	if (!isValidDate(d, m, y)) {
-		throw std::invalid_argument("Некорректная дата");
+		throw std::invalid_argument("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 	}
 	day = d;
 	month = m;
@@ -25,15 +26,15 @@ date::date(int d, int m, int y) {
 
 void date::input() {
 	int d, m, y;
-	std::cout << "Введите день: ";
+	std::cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ: ";
 	std::cin >> d;
-	std::cout << "Введите месяц: ";
+	std::cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: ";
 	std::cin >> m;
-	std::cout << "Введите год: ";
+	std::cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: ";
 	std::cin >> y;
 
 	if (!isValidDate(d, m, y)) {
-		throw std::invalid_argument("Некорректная дата");
+		throw std::invalid_argument("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 	}
 
 	day = d;
@@ -74,29 +75,29 @@ std::istream& operator>>(std::istream& is, date& dt)
 	std::ios_base::iostate original_state = is.rdstate();
 
 	try {
-		is.clear(); // Сбрасываем флаги ошибок
+		is.clear(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 		int d, m, y;
-		std::cout << "Введите день: ";
+		std::cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ: ";
 		is >> d;
 		if (is.fail()) {
-			throw std::invalid_argument("Некорректный ввод");
+			throw std::invalid_argument("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		}
-		std::cout << "Введите месяц: ";
+		std::cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: ";
 		is >> m;
 		if (is.fail()) {
-			throw std::invalid_argument("Некорректный ввод");
+			throw std::invalid_argument("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		}
-		std::cout << "Введите год: ";
+		std::cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: ";
 		is >> y;
 		if (is.fail()) {
-			throw std::invalid_argument("Некорректный ввод");
+			throw std::invalid_argument("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		}
 
 		
 
 		if (!dt.isValidDate(d, m, y)) {
-			throw std::invalid_argument("Некорректная дата");
+			throw std::invalid_argument("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		}
 		dt.day = d;
 		dt.month = m;
@@ -107,10 +108,10 @@ std::istream& operator>>(std::istream& is, date& dt)
 
 	}
 	catch (const std::exception& e) {
-		// Восстанавливаем состояние и очищаем буфер
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		is.clear(original_state);
 		is.setstate(std::ios::failbit);
-		is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		throw; // Пробрасываем исключение БЕЗ вывода сообщения
+		is.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
+		throw; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 }

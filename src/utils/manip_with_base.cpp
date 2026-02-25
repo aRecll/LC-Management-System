@@ -34,7 +34,7 @@ void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppli
         set_сolor(BRIGHT_GREEN);
         cout << "\nНайдено поставщиков: " << foundSuppliers.size() << endl;
         cout << "Динамический массив создан с использованием оператора присваивания" << endl;
-        reset_сolor();
+        reset_color();
 
         
         set_сolor(BRIGHT_CYAN);

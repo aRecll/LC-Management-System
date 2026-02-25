@@ -7,9 +7,9 @@ const string SHIPMENT_FILE = "shipments.dat";
 void save_suppliers_to_file(const vector<unique_ptr<supplier>>& suppliers) {
     ofstream file(SUPPLIER_FILE);
     if (!file) {
-        set_сolor(BRIGHT_RED);
-        cout << "Ошибка открытия файла для записи поставщиков!" << endl;
-        reset_сolor();
+        set_пїЅolor(BRIGHT_RED);
+        cout << "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" << endl;
+        reset_пїЅolor();
         return;
     }
 
@@ -19,16 +19,16 @@ void save_suppliers_to_file(const vector<unique_ptr<supplier>>& suppliers) {
         file << supp->get_contract_amount() << endl;
         file << supp->get_paid_amount() << endl;
     }
-    set_сolor(BRIGHT_GREEN);
-    cout << "  Данные поставщиков сохранены в файл." << endl;
-    reset_сolor();
+    set_пїЅolor(BRIGHT_GREEN);
+    cout << "  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ." << endl;
+    reset_пїЅolor();
 }
 void save_shipments_to_file(const vector<unique_ptr<shipment>>& shipments) {
     ofstream file(SHIPMENT_FILE);
     if (!file) {
-        set_сolor(BRIGHT_RED);
-        cout << "Ошибка открытия файла для записи поставок!" << endl;
-        reset_сolor();
+        set_пїЅolor(BRIGHT_RED);
+        cout << "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" << endl;
+        reset_пїЅolor();
         return;
     }
 
@@ -41,17 +41,17 @@ void save_shipments_to_file(const vector<unique_ptr<shipment>>& shipments) {
         file << ship->get_supply_amount() << endl;
         file << ship->get_payment_amount() << endl;
     }
-    set_сolor(BRIGHT_GREEN);
-    cout << "  Данные поставок сохранены в файл." << endl;
-    reset_сolor();
+    set_пїЅolor(BRIGHT_GREEN);
+    cout << "  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ." << endl;
+    reset_пїЅolor();
 }
 
 void load_suppliers_from_file(vector<unique_ptr<supplier>>& suppliers) {
     ifstream file(SUPPLIER_FILE);
     if (!file) {
-        set_сolor(BRIGHT_YELLOW);
-        cout << "Файл поставщиков не найден. Будет создан новый." << endl;
-        reset_сolor();
+        set_пїЅolor(BRIGHT_YELLOW);
+        cout << "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ." << endl;
+        reset_пїЅolor();
         return;
     }
 
@@ -69,17 +69,17 @@ void load_suppliers_from_file(vector<unique_ptr<supplier>>& suppliers) {
 
         suppliers.push_back(make_unique<supplier>(name, contract, paid));
     }
-    set_сolor(BRIGHT_GREEN);
-    cout << "  Загружено " << count << " поставщиков из файла." << endl;
-    reset_сolor();
+    set_пїЅolor(BRIGHT_GREEN);
+    cout << "  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " << count << " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ." << endl;
+    reset_пїЅolor();
 }
 
 void load_shipments_from_file(vector<unique_ptr<shipment>>& shipments) {
     ifstream file(SHIPMENT_FILE);
     if (!file) {
-        set_сolor(BRIGHT_YELLOW);
-        cout << "Файл поставок не найден. Будет создан новый." << endl;
-        reset_сolor();
+        set_пїЅolor(BRIGHT_YELLOW);
+        cout << "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ." << endl;
+        reset_пїЅolor();
         return;
     }
 
@@ -99,7 +99,7 @@ void load_shipments_from_file(vector<unique_ptr<shipment>>& shipments) {
         date delivery_date(day, month, year);
         shipments.push_back(make_unique<shipment>(name, delivery_date, supply, payment));
     }
-    set_сolor(BRIGHT_GREEN);
-    cout << "- Загружено " << count << " поставок из файла." << endl;
-    reset_сolor();
+    set_пїЅolor(BRIGHT_GREEN);
+    cout << "- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " << count << " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ." << endl;
+    reset_пїЅolor();
 }

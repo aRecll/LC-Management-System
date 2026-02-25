@@ -3,14 +3,22 @@
 #include "../hierarchy/shipment.h"
 #include "../hierarchy/supplier.h"
 
-#include <conio.h>
+
 
 #include <iomanip>
 #include <iostream>
 #include <memory>
 #include <vector>
-#include <windows.h>
 
+
+#ifdef _WIN32 
+#include <windows.h> 
+#include <conio.h>
+#else 
+#include <unistd.h> 
+#endif
+
+#ifdef _WIN32 
 enum ConsoleColors {
     BLACK = 0,
     BLUE = 1,
@@ -29,10 +37,31 @@ enum ConsoleColors {
     BRIGHT_YELLOW = 14,
     BRIGHT_WHITE = 15
 };
-using namespace std;
-void set_ñolor(int textColor, int bgColor = BLACK);
+else
+num ConsoleColors {
+    BLACK = "\033[30m",
+    BLUE = "\033[34m",
+    GREEN = "\033[32m",
+    CYAN = "\033[36m",
+    RED = "\033[31m",
+    MAGENTA = "\033[35m",
+    YELLOW = "\033[33m",
+    WHITE = "\033[37m",
+    GRAY = "\033[90m",
+    BRIGHT_BLUE = 9,
+    BRIGHT_GREEN = 10,
+    BRIGHT_CYAN = 11,
+    BRIGHT_RED = 12,
+    BRIGHT_MAGENTA = 13,
+    BRIGHT_YELLOW = 14,
+    BRIGHT_WHITE = 15
+};
 
-void reset_ñolor();
+#endif
+using namespace std;
+void set_ï¿½olor(int textColor, int bgColor = BLACK);
+
+void reset_ï¿½olor();
 
 void print_header(const string& title);
 
