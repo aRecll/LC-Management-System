@@ -59,9 +59,9 @@ num ConsoleColors {
 
 #endif
 using namespace std;
-void set_�olor(int textColor, int bgColor = BLACK);
+void set_color(int textColor, int bgColor = BLACK);
 
-void reset_�olor();
+void reset_color();
 
 void print_header(const string& title);
 

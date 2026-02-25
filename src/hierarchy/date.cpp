@@ -17,7 +17,7 @@ bool date::isValidDate(int d, int m, int y) const {
 
 date::date(int d, int m, int y) {
 	if (!isValidDate(d, m, y)) {
-		throw std::invalid_argument("������������ ����");
+		throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	}
 	day = d;
 	month = m;
@@ -26,15 +26,15 @@ date::date(int d, int m, int y) {
 
 void date::input() {
 	int d, m, y;
-	std::cout << "������� ����: ";
+	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: ";
 	std::cin >> d;
-	std::cout << "������� �����: ";
+	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½: ";
 	std::cin >> m;
-	std::cout << "������� ���: ";
+	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ";
 	std::cin >> y;
 
 	if (!isValidDate(d, m, y)) {
-		throw std::invalid_argument("������������ ����");
+		throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	}
 
 	day = d;
@@ -75,29 +75,29 @@ std::istream& operator>>(std::istream& is, date& dt)
 	std::ios_base::iostate original_state = is.rdstate();
 
 	try {
-		is.clear(); // ���������� ����� ������
+		is.clear(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		int d, m, y;
-		std::cout << "������� ����: ";
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: ";
 		is >> d;
 		if (is.fail()) {
-			throw std::invalid_argument("������������ ����");
+			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
-		std::cout << "������� �����: ";
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½: ";
 		is >> m;
 		if (is.fail()) {
-			throw std::invalid_argument("������������ ����");
+			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
-		std::cout << "������� ���: ";
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ";
 		is >> y;
 		if (is.fail()) {
-			throw std::invalid_argument("������������ ����");
+			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 
 		
 
 		if (!dt.isValidDate(d, m, y)) {
-			throw std::invalid_argument("������������ ����");
+			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		dt.day = d;
 		dt.month = m;
@@ -108,10 +108,10 @@ std::istream& operator>>(std::istream& is, date& dt)
 
 	}
 	catch (const std::exception& e) {
-		// ��������������� ��������� � ������� �����
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		is.clear(original_state);
 		is.setstate(std::ios::failbit);
 		is.ignore((std::numeric_limits<std::streamsize>::max()), '\n');
-		throw; // ������������ ���������� ��� ������ ���������
+		throw; // Ïðîáðàñûâàåì èñêëþ÷åíèå ÁÅÇ âûâîäà ñîîáùåíèÿ
 	}
 }

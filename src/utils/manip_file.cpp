@@ -7,9 +7,9 @@ const string SHIPMENT_FILE = "shipments.dat";
 void save_suppliers_to_file(const vector<unique_ptr<supplier>>& suppliers) {
     ofstream file(SUPPLIER_FILE);
     if (!file) {
-        set_�olor(BRIGHT_RED);
-        cout << "������ �������� ����� ��� ������ �����������!" << endl;
-        reset_�olor();
+        set_color(BRIGHT_RED);
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà äëÿ çàïèñè ïîñòàâùèêîâ!" << endl;
+        reset_color();
         return;
     }
 
@@ -19,16 +19,16 @@ void save_suppliers_to_file(const vector<unique_ptr<supplier>>& suppliers) {
         file << supp->get_contract_amount() << endl;
         file << supp->get_paid_amount() << endl;
     }
-    set_�olor(BRIGHT_GREEN);
-    cout << "  ������ ����������� ��������� � ����." << endl;
-    reset_�olor();
+    set_color(BRIGHT_GREEN);
+    cout << "  Äàííûå ïîñòàâùèêîâ ñîõðàíåíû â ôàéë." << endl;
+    reset_color();
 }
 void save_shipments_to_file(const vector<unique_ptr<shipment>>& shipments) {
     ofstream file(SHIPMENT_FILE);
     if (!file) {
-        set_�olor(BRIGHT_RED);
-        cout << "������ �������� ����� ��� ������ ��������!" << endl;
-        reset_�olor();
+        set_color(BRIGHT_RED);
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà äëÿ çàïèñè ïîñòàâîê!" << endl;
+        reset_color();
         return;
     }
 
@@ -41,17 +41,17 @@ void save_shipments_to_file(const vector<unique_ptr<shipment>>& shipments) {
         file << ship->get_supply_amount() << endl;
         file << ship->get_payment_amount() << endl;
     }
-    set_�olor(BRIGHT_GREEN);
-    cout << "  ������ �������� ��������� � ����." << endl;
-    reset_�olor();
+    set_color(BRIGHT_GREEN);
+    cout << "  Äàííûå ïîñòàâîê ñîõðàíåíû â ôàéë." << endl;
+    reset_color();
 }
 
 void load_suppliers_from_file(vector<unique_ptr<supplier>>& suppliers) {
     ifstream file(SUPPLIER_FILE);
     if (!file) {
-        set_�olor(BRIGHT_YELLOW);
-        cout << "���� ����������� �� ������. ����� ������ �����." << endl;
-        reset_�olor();
+        set_color(BRIGHT_YELLOW);
+        cout << "Ôàéë ïîñòàâùèêîâ íå íàéäåí. Áóäåò ñîçäàí íîâûé." << endl;
+        reset_color();
         return;
     }
 
@@ -69,17 +69,17 @@ void load_suppliers_from_file(vector<unique_ptr<supplier>>& suppliers) {
 
         suppliers.push_back(make_unique<supplier>(name, contract, paid));
     }
-    set_�olor(BRIGHT_GREEN);
-    cout << "  ��������� " << count << " ����������� �� �����." << endl;
-    reset_�olor();
+    set_color(BRIGHT_GREEN);
+    cout << "  Çàãðóæåíî " << count << " ïîñòàâùèêîâ èç ôàéëà." << endl;
+    reset_color();
 }
 
 void load_shipments_from_file(vector<unique_ptr<shipment>>& shipments) {
     ifstream file(SHIPMENT_FILE);
     if (!file) {
-        set_�olor(BRIGHT_YELLOW);
-        cout << "���� �������� �� ������. ����� ������ �����." << endl;
-        reset_�olor();
+        set_color(BRIGHT_YELLOW);
+        cout << "Ôàéë ïîñòàâîê íå íàéäåí. Áóäåò ñîçäàí íîâûé." << endl;
+        reset_color();
         return;
     }
 
@@ -99,7 +99,7 @@ void load_shipments_from_file(vector<unique_ptr<shipment>>& shipments) {
         date delivery_date(day, month, year);
         shipments.push_back(make_unique<shipment>(name, delivery_date, supply, payment));
     }
-    set_�olor(BRIGHT_GREEN);
-    cout << "- ��������� " << count << " �������� �� �����." << endl;
-    reset_�olor();
+    set_color(BRIGHT_GREEN);
+    cout << "- Çàãðóæåíî " << count << " ïîñòàâîê èç ôàéëà." << endl;
+    reset_color();
 }
