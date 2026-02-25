@@ -6,13 +6,13 @@
 #include "../hierarchy/shipment.h"
 #include "../hierarchy/supplier.h"
 #include <algorithm>
-#include <conio.h>
+
 
 #include <iomanip>
 
 #include <memory>
 #include <vector>
-#include <windows.h>
+
 
 
 void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppliers);

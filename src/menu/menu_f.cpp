@@ -1,12 +1,26 @@
 ﻿#include "menu_f.h"
 #include "emoji.h"
 
+#ifdef _WIN32 
 void set_color(int textColor, int bgColor) {
+    
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
 }
+#else 
+set_color(string textColor, string  bgColor) {
+
+    std::cout << textColor;
+}
+#endif
+
+
 void reset_color() {
+    #ifdef _WIN32
     set_color(WHITE, BLACK);
+    #else 
+    std::cout << "\033[0m"; 
+    #endif
 }
 void print_header(const string& title) {
     set_color(BRIGHT_CYAN);
@@ -16,7 +30,12 @@ void print_header(const string& title) {
     reset_color();
 }
 void clear_screen() {
+    #ifdef _WIN32 
     system("cls");
+#else 
+    system("clear");
+#endif
+    
 }
 void printEmoji(const std::string& text) {
     UINT originalCP = GetConsoleOutputCP();
@@ -59,7 +78,6 @@ void print_suppliers_table(const vector<unique_ptr<supplier>>& suppliers) {
         reset_color();
         return;
     }
-
     print_header("ТАБЛИЦА ПОСТАВЩИКОВ");
 
     set_color(BRIGHT_CYAN);

@@ -8,7 +8,7 @@ void save_suppliers_to_file(const vector<unique_ptr<supplier>>& suppliers) {
     ofstream file(SUPPLIER_FILE);
     if (!file) {
         set_color(BRIGHT_RED);
-        cout << "Îøèáêà îòêðûòèÿ ôàéëà äëÿ çàïèñè ïîñòàâùèêîâ!" << endl;
+        cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ  Ã®Ã²ÃªÃ°Ã»Ã²Ã¨Ã¿ Ã´Ã Ã©Ã«Ã  Ã¤Ã«Ã¿ Ã§Ã Ã¯Ã¨Ã±Ã¨ Ã¯Ã®Ã±Ã²Ã Ã¢Ã¹Ã¨ÃªÃ®Ã¢!" << endl;
         reset_color();
         return;
     }
@@ -20,14 +20,14 @@ void save_suppliers_to_file(const vector<unique_ptr<supplier>>& suppliers) {
         file << supp->get_paid_amount() << endl;
     }
     set_color(BRIGHT_GREEN);
-    cout << "  Äàííûå ïîñòàâùèêîâ ñîõðàíåíû â ôàéë." << endl;
+    cout << "  Ã„Ã Ã­Ã­Ã»Ã¥ Ã¯Ã®Ã±Ã²Ã Ã¢Ã¹Ã¨ÃªÃ®Ã¢ Ã±Ã®ÃµÃ°Ã Ã­Ã¥Ã­Ã» Ã¢ Ã´Ã Ã©Ã«." << endl;
     reset_color();
 }
 void save_shipments_to_file(const vector<unique_ptr<shipment>>& shipments) {
     ofstream file(SHIPMENT_FILE);
     if (!file) {
         set_color(BRIGHT_RED);
-        cout << "Îøèáêà îòêðûòèÿ ôàéëà äëÿ çàïèñè ïîñòàâîê!" << endl;
+        cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ  Ã®Ã²ÃªÃ°Ã»Ã²Ã¨Ã¿ Ã´Ã Ã©Ã«Ã  Ã¤Ã«Ã¿ Ã§Ã Ã¯Ã¨Ã±Ã¨ Ã¯Ã®Ã±Ã²Ã Ã¢Ã®Ãª!" << endl;
         reset_color();
         return;
     }
@@ -42,7 +42,7 @@ void save_shipments_to_file(const vector<unique_ptr<shipment>>& shipments) {
         file << ship->get_payment_amount() << endl;
     }
     set_color(BRIGHT_GREEN);
-    cout << "  Äàííûå ïîñòàâîê ñîõðàíåíû â ôàéë." << endl;
+    cout << "  Ã„Ã Ã­Ã­Ã»Ã¥ Ã¯Ã®Ã±Ã²Ã Ã¢Ã®Ãª Ã±Ã®ÃµÃ°Ã Ã­Ã¥Ã­Ã» Ã¢ Ã´Ã Ã©Ã«." << endl;
     reset_color();
 }
 
@@ -50,7 +50,7 @@ void load_suppliers_from_file(vector<unique_ptr<supplier>>& suppliers) {
     ifstream file(SUPPLIER_FILE);
     if (!file) {
         set_color(BRIGHT_YELLOW);
-        cout << "Ôàéë ïîñòàâùèêîâ íå íàéäåí. Áóäåò ñîçäàí íîâûé." << endl;
+        cout << "Ã”Ã Ã©Ã« Ã¯Ã®Ã±Ã²Ã Ã¢Ã¹Ã¨ÃªÃ®Ã¢ Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­. ÃÃ³Ã¤Ã¥Ã² Ã±Ã®Ã§Ã¤Ã Ã­ Ã­Ã®Ã¢Ã»Ã©." << endl;
         reset_color();
         return;
     }
@@ -70,7 +70,7 @@ void load_suppliers_from_file(vector<unique_ptr<supplier>>& suppliers) {
         suppliers.push_back(make_unique<supplier>(name, contract, paid));
     }
     set_color(BRIGHT_GREEN);
-    cout << "  Çàãðóæåíî " << count << " ïîñòàâùèêîâ èç ôàéëà." << endl;
+    cout << "  Ã‡Ã Ã£Ã°Ã³Ã¦Ã¥Ã­Ã® " << count << " Ã¯Ã®Ã±Ã²Ã Ã¢Ã¹Ã¨ÃªÃ®Ã¢ Ã¨Ã§ Ã´Ã Ã©Ã«Ã ." << endl;
     reset_color();
 }
 
@@ -78,7 +78,7 @@ void load_shipments_from_file(vector<unique_ptr<shipment>>& shipments) {
     ifstream file(SHIPMENT_FILE);
     if (!file) {
         set_color(BRIGHT_YELLOW);
-        cout << "Ôàéë ïîñòàâîê íå íàéäåí. Áóäåò ñîçäàí íîâûé." << endl;
+        cout << "Ã”Ã Ã©Ã« Ã¯Ã®Ã±Ã²Ã Ã¢Ã®Ãª Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­. ÃÃ³Ã¤Ã¥Ã² Ã±Ã®Ã§Ã¤Ã Ã­ Ã­Ã®Ã¢Ã»Ã©." << endl;
         reset_color();
         return;
     }
@@ -100,6 +100,6 @@ void load_shipments_from_file(vector<unique_ptr<shipment>>& shipments) {
         shipments.push_back(make_unique<shipment>(name, delivery_date, supply, payment));
     }
     set_color(BRIGHT_GREEN);
-    cout << "- Çàãðóæåíî " << count << " ïîñòàâîê èç ôàéëà." << endl;
+    cout << "- Ã‡Ã Ã£Ã°Ã³Ã¦Ã¥Ã­Ã® " << count << " Ã¯Ã®Ã±Ã²Ã Ã¢Ã®Ãª Ã¨Ã§ Ã´Ã Ã©Ã«Ã ." << endl;
     reset_color();
 }

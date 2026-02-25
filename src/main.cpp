@@ -5,26 +5,53 @@
 #include "thread"
 
 using namespace std;
+#ifdef _WIN32
+
+#else
+#include <termios.h> 
+#include <unistd.h>  
+    #endif
 
 
-
-
-
-void setConsoleFontSize(short size) {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+void setUp(){
+#ifdef _WIN32
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_FONT_INFOEX fontInfo;
     fontInfo.cbSize = sizeof(fontInfo);
     GetCurrentConsoleFontEx(hConsole, FALSE, &fontInfo);
     fontInfo.dwFontSize.Y = size;
     SetCurrentConsoleFontEx(hConsole, FALSE, &fontInfo);
-}
+#else
+    #endif
 
+}
+void setConsoleFontSize(short size) {
+    #ifdef _WIN32
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_FONT_INFOEX fontInfo;
+    fontInfo.cbSize = sizeof(fontInfo);
+    GetCurrentConsoleFontEx(hConsole, FALSE, &fontInfo);
+    fontInfo.dwFontSize.Y = size;
+    SetCurrentConsoleFontEx(hConsole, FALSE, &fontInfo);
+#else
+    #endif
+}
+int getch_linux() {
+    struct termios oldt, newt;
+    int ch;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return ch;
+}
 
 
 int main() {
     //setlocale(LC_ALL, "");
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
+    
     /*SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);*/
     
@@ -55,8 +82,12 @@ int main() {
 
     while (running) {
         print_menu(menuOptions, selected);
-
+        #ifdef _WIN32
         int key = _getch();
+    #else
+    int key = getch_linux();
+    #endif
+        
         if (key == 224) { 
             key = _getch();
             switch (key) {
