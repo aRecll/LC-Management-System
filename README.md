@@ -3,6 +3,7 @@
 [![C++ Standard](https://img.shields.io/badge/C%2B%2B-14-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B14)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build: CMake](https://img.shields.io/badge/Build-CMake-green.svg)](https://cmake.org/)
+<img width="1112" height="593" alt="Screenshot_1377" src="https://github.com/user-attachments/assets/f7c7e7e7-cf30-4caa-8715-3fdba379ca9b" />
 
 **LogiCore Management System** — это высокопроизводительная система управления данными (например, логистикой/складом), написанная на C++. Проект ориентирован на чистоту архитектуры, модульность и кроссплатформенную совместимость.
 
