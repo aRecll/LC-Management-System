@@ -6,6 +6,8 @@
 
 
 **LogiCore Management System** — учебный проект который реализует кроссплатформенное консольное приложение на примере панели управления базой данных(поставщики,поставки) с использваонием современного с++ и ооп 
+
+
 <img width="400" height="300" alt="Screenshot_1377" src="https://github.com/user-attachments/assets/f7c7e7e7-cf30-4caa-8715-3fdba379ca9b" />
 <img width="400" height="300" alt="Screenshot_1378" src="https://github.com/user-attachments/assets/08792391-8765-4010-a0b5-1f9e03d23fb6" />
 
