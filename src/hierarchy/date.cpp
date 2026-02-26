@@ -17,7 +17,7 @@ bool date::isValidDate(int d, int m, int y) const {
 
 date::date(int d, int m, int y) {
 	if (!isValidDate(d, m, y)) {
-		throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		throw std::invalid_argument("Некорректная дата");
 	}
 	day = d;
 	month = m;
@@ -26,15 +26,15 @@ date::date(int d, int m, int y) {
 
 void date::input() {
 	int d, m, y;
-	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: ";
+	std::cout << "Введите день: ";
 	std::cin >> d;
-	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½: ";
+	std::cout << "Введите месяц: ";
 	std::cin >> m;
-	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ";
+	std::cout << "Введите год: ";
 	std::cin >> y;
 
 	if (!isValidDate(d, m, y)) {
-		throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		throw std::invalid_argument("Некорректная дата");
 	}
 
 	day = d;
@@ -78,26 +78,26 @@ std::istream& operator>>(std::istream& is, date& dt)
 		is.clear(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		int d, m, y;
-		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: ";
+		std::cout << "Введите день: ";
 		is >> d;
 		if (is.fail()) {
-			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			throw std::invalid_argument("Некорректный ввод");
 		}
-		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½: ";
+		std::cout << "Введите месяц:";
 		is >> m;
 		if (is.fail()) {
-			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			throw std::invalid_argument("Некорректный ввод");
 		}
-		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ";
+		std::cout << "Введите год: ";
 		is >> y;
 		if (is.fail()) {
-			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			throw std::invalid_argument("Некорректный ввод");
 		}
 
 		
 
 		if (!dt.isValidDate(d, m, y)) {
-			throw std::invalid_argument("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			throw std::invalid_argument("Некорректная дата");
 		}
 		dt.day = d;
 		dt.month = m;

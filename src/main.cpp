@@ -6,10 +6,17 @@
 
 using namespace std;
 #ifdef _WIN32
-
+    #define UP 72
+    #define DOWN 80
+    #define ENTER 13
+    #define ESC 27
 #else
 #include <termios.h> 
 #include <unistd.h>  
+#define UP 65
+    #define DOWN 66
+    #define ENTER 10
+    #define ESC 27
     #endif
 
 
@@ -36,24 +43,12 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 #else
     #endif
 }
-int getch_linux() {
-    struct termios oldt, newt;
-    int ch;
-    tcgetattr(STDIN_FILENO, &oldt);
-    newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-    ch = getchar();
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-    return ch;
-}
 
 
 int main() {
-    //setlocale(LC_ALL, "");
     
-    /*SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);*/
+    setUp();
+    
     
     vector<unique_ptr<supplier>> suppliers;
     vector<unique_ptr<shipment>> shipments;
@@ -62,7 +57,7 @@ int main() {
     load_suppliers_from_file(suppliers);
     load_shipments_from_file(shipments);
 
-    // Меню
+    
     vector<string> menuOptions = {
         "Показать все данные",
         " Добавить новых поставщиков",
@@ -82,24 +77,21 @@ int main() {
 
     while (running) {
         print_menu(menuOptions, selected);
-        #ifdef _WIN32
-        int key = _getch();
-    #else
-    int key = getch_linux();
-    #endif
+        
+        int key = getch_();
+    
         
         if (key == 224) { 
-            key = _getch();
-            switch (key) {
-            case 72: 
-                selected = (selected - 1 + menuOptions.size()) % menuOptions.size();
-                break;
-            case 80: 
-                selected = (selected + 1) % menuOptions.size();
-                break;
-            }
+            key = getch_();
+            
         }
-        else if (key == 13) { 
+        if (key == UP) {
+        selected = (selected - 1 + menuOptions.size()) % menuOptions.size();
+        }
+        else if (key == DOWN) {
+        selected = (selected + 1) % menuOptions.size();
+        }
+        else if (key== ENTER ) { 
             switch (selected) {
             case 0:
                 show_All_data(suppliers, shipments);
@@ -133,7 +125,7 @@ int main() {
                 break;
             }
         }
-        else if (key == 27) { // ESC
+        else if (key == ESC) { // ESC
             running = false;
         }
     }

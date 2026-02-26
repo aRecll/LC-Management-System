@@ -4,6 +4,7 @@
 
 
 out/
+build/
 ### C++ ###
 # Prerequisites
 *.d

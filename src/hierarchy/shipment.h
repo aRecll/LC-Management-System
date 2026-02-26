@@ -18,7 +18,7 @@ public:
     shipment(const std::string& name, const date& date, double supply, double payment)
         : common(name), delivery_date(date), supply_amount(supply), payment_amount(payment) {
         if (supply < 0 || payment < 0) {
-            throw std::invalid_argument("Ñóììû íå ìîãóò áûòü îòğèöàòåëüíûìè");
+            throw std::invalid_argument("Ğ¡ÑƒĞ¼Ğ¼Ñ‹ Ğ½Ğµ Ğ¼Ğ¾Ğ³ÑƒÑ‚ Ğ±Ñ‹Ñ‚ÑŒ Ğ¾Ñ‚Ñ€Ğ¸Ñ†Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ñ‹Ğ¼Ğ¸");
         }
     }
 #pragma endregion

@@ -1,18 +1,83 @@
 ﻿#include "menu_f.h"
 #include "emoji.h"
 
-#ifdef _WIN32 
-void set_color(int textColor, int bgColor) {
-    
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
-}
-#else 
-set_color(string textColor, string  bgColor) {
+#ifndef _WIN32
+// Глобальная переменная для хранения настроек (чтобы восстановить их при выходе)
+struct termios old_settings;
 
-    std::cout << textColor;
+void restore_terminal() {
+    tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
 }
 #endif
+
+int getch_() {
+#ifdef _WIN32
+    int ch = _getch();
+    return ch;
+#else
+    struct termios newt;
+    int ch;
+    tcgetattr(STDIN_FILENO, &old_settings);
+    newt = old_settings;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    
+    ch = getchar();
+    if (ch == 27) { // Обработка ESC или стрелок
+        fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
+        int next1 = getchar();
+        int next2 = getchar();
+        fcntl(STDIN_FILENO, F_SETFL, 0);
+
+        if (next1 == -1) { // Это чистый ESC
+             tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
+             return 27; 
+        }
+        if (next1 == 91) { // Это стрелка
+             tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
+             return next2; // Вернет 65 (UP) или 66 (DOWN)
+        }
+    }
+    tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
+    return ch;
+#endif
+}
+
+
+std::string getAnsiColor(int colorNum) {
+    switch (colorNum) {
+        case 0:  return "\033[30m";      // BLACK
+        case 1:  return "\033[34m";      // BLUE
+        case 2:  return "\033[32m";      // GREEN
+        case 3:  return "\033[36m";      // CYAN
+        case 4:  return "\033[31m";      // RED
+        case 5:  return "\033[35m";      // MAGENTA
+        case 6:  return "\033[33m";      // YELLOW
+        case 7:  return "\033[37m";      // WHITE
+        case 8:  return "\033[90m";      // GRAY (Bright Black)
+        case 9:  return "\033[94m";      // BRIGHT_BLUE
+        case 10: return "\033[92m";      // BRIGHT_GREEN
+        case 11: return "\033[96m";      // BRIGHT_CYAN
+        case 12: return "\033[91m";      // BRIGHT_RED
+        case 13: return "\033[95m";      // BRIGHT_MAGENTA
+        case 14: return "\033[93m";      // BRIGHT_YELLOW
+        case 15: return "\033[97m";      // BRIGHT_WHITE
+        default: return "\033[0m";       // RESET (если номер неверный)
+    }
+}
+
+
+void set_color(int textColor, int bgColor) {
+    #ifdef _WIN32 
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
+    #else
+    string color=getAnsiColor(textColor);
+    std::cout<<color;
+    #endif
+    
+}
+
 
 
 void reset_color() {
@@ -38,12 +103,18 @@ void clear_screen() {
     
 }
 void printEmoji(const std::string& text) {
+       #ifdef _WIN32 
     UINT originalCP = GetConsoleOutputCP();
     SetConsoleOutputCP(CP_UTF8);
+#else 
+    #endif
 
     std::cout << text;
-
-    SetConsoleOutputCP(originalCP);
+      #ifdef _WIN32 
+     SetConsoleOutputCP(originalCP);
+#else 
+#endif
+   
 }
 
 void print_menu(const vector<string>& options, int selected) {
@@ -141,5 +212,5 @@ void show_All_data(const vector<unique_ptr<supplier>>& suppliers,
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }

@@ -5,23 +5,23 @@ void shipment::input()
     try {
         common::input();
 
-        std::cout << "Введите дату поставки: \n";
+        std::cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РїРѕСЃС‚Р°РІРєРё: \n";
         delivery_date.input();
 
-        std::cout << "Введите сумму поставки: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РїРѕСЃС‚Р°РІРєРё: ";
         std::cin >> supply_amount;
         if (supply_amount < 0) {
-            throw std::invalid_argument("Сумма поставки не может быть отрицательной");
+            throw std::invalid_argument("РЎСѓРјРјР° РїРѕСЃС‚Р°РІРєРё РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
-        std::cout << "Введите сумму оплаты: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РѕРїР»Р°С‚С‹: ";
         std::cin >> payment_amount;
         if (payment_amount < 0) {
-            throw std::invalid_argument("Сумма оплаты не может быть отрицательной");
+            throw std::invalid_argument("РЎСѓРјРјР° РѕРїР»Р°С‚С‹ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
     }
     catch (const std::exception& e) {
-        //std::cerr << "Ошибка ввода: " << e.what() << std::endl;
+        //std::cerr << "РћС€РёР±РєР° РІРІРѕРґР°: " << e.what() << std::endl;
         throw;
     }
 }
@@ -29,11 +29,11 @@ void shipment::input()
 void shipment::output() const
 {
     common::output();
-    std::cout << ", Дата: ";
+    std::cout << ", Р”Р°С‚Р°: ";
     delivery_date.output();
-    std::cout << ", Поставка: " << supply_amount
-        << ", Оплата: " << payment_amount
-        << ", Сальдо: " << get_balance();
+    std::cout << ", РџРѕСЃС‚Р°РІРєР°: " << supply_amount
+        << ", РћРїР»Р°С‚Р°: " << payment_amount
+        << ", РЎР°Р»СЊРґРѕ: " << get_balance();
 }
 
 double shipment::get_balance() const
@@ -67,26 +67,26 @@ std::istream& operator>>(std::istream& is, shipment& obj)
 
         is >> static_cast<common&>(obj);
 
-        std::cout << "Введите дату поставки (день месяц год): ";
+        std::cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РїРѕСЃС‚Р°РІРєРё (РґРµРЅСЊ РјРµСЃСЏС† РіРѕРґ): ";
         is >> obj.delivery_date;
         
 
-        std::cout << "Введите сумму поставки: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РїРѕСЃС‚Р°РІРєРё: ";
         is >> obj.supply_amount;
         if (is.fail()) {
-            throw std::invalid_argument("Некорректный формат суммы поставки");
+            throw std::invalid_argument("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ СЃСѓРјРјС‹ РїРѕСЃС‚Р°РІРєРё");
         }
         if (obj.supply_amount < 0) {
-            throw std::invalid_argument("Сумма поставки не может быть отрицательной");
+            throw std::invalid_argument("РЎСѓРјРјР° РїРѕСЃС‚Р°РІРєРё РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
-        std::cout << "Введите сумму оплаты: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РѕРїР»Р°С‚С‹: ";
         is >> obj.payment_amount;
         if (is.fail()) {
-            throw std::invalid_argument("Некорректный формат суммы оплаты");
+            throw std::invalid_argument("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ СЃСѓРјРјС‹ РѕРїР»Р°С‚С‹");
         }
         if (obj.payment_amount < 0) {
-            throw std::invalid_argument("Сумма оплаты не может быть отрицательной");
+            throw std::invalid_argument("РЎСѓРјРјР° РѕРїР»Р°С‚С‹ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
         

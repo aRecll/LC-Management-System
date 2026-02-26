@@ -4,14 +4,14 @@
 #pragma region functions
 void common::input()
 {
-	std::cout << "Введите название фирмы поставщика: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ С„РёСЂРјС‹ РїРѕСЃС‚Р°РІС‰РёРєР°: ";
 	std::cin.ignore();
 	std::getline(std::cin, company_name);
 }
 
 void common::output() const
 {
-	std::cout << "Фирма: " << company_name;
+	std::cout << "Р¤РёСЂРјР°: " << company_name;
 }
 
 bool common::search_by_company(const std::string& name) const
@@ -43,12 +43,12 @@ std::ostream& operator<<(std::ostream& os, const common& obj)
 std::istream& operator>>(std::istream& is, common& obj)
 {
 	
-		std::cout << "Введите название фирмы поставщика: ";
+		std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ С„РёСЂРјС‹ РїРѕСЃС‚Р°РІС‰РёРєР°: ";
 		//is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::getline(is, obj.company_name);
 
 		if (obj.company_name.empty()) {
-			throw std::invalid_argument("Название фирмы не может быть пустым");
+			throw std::invalid_argument("РќР°Р·РІР°РЅРёРµ С„РёСЂРјС‹ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј");
 		}
 
 		return is;

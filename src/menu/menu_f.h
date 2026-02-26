@@ -16,9 +16,12 @@
 #include <conio.h>
 #else 
 #include <unistd.h> 
+#include <termios.h>  
+#include <unistd.h>   
+#include <fcntl.h>
 #endif
 
-#ifdef _WIN32 
+
 enum ConsoleColors {
     BLACK = 0,
     BLUE = 1,
@@ -37,30 +40,11 @@ enum ConsoleColors {
     BRIGHT_YELLOW = 14,
     BRIGHT_WHITE = 15
 };
-else
-num ConsoleColors {
-    BLACK = "\033[30m",
-    BLUE = "\033[34m",
-    GREEN = "\033[32m",
-    CYAN = "\033[36m",
-    RED = "\033[31m",
-    MAGENTA = "\033[35m",
-    YELLOW = "\033[33m",
-    WHITE = "\033[37m",
-    GRAY = "\033[90m",
-    BRIGHT_BLUE = 9,
-    BRIGHT_GREEN = 10,
-    BRIGHT_CYAN = 11,
-    BRIGHT_RED = 12,
-    BRIGHT_MAGENTA = 13,
-    BRIGHT_YELLOW = 14,
-    BRIGHT_WHITE = 15
-};
 
-#endif
+
 using namespace std;
 void set_color(int textColor, int bgColor = BLACK);
-
+int getch_();
 void reset_color();
 
 void print_header(const string& title);

@@ -3,7 +3,7 @@
 supplier::supplier(const std::string& name, double contract, double paid) : common(name), contract_amount(contract), paid_amount(paid) 
 {
     if (contract < 0 || paid < 0) {
-        throw std::invalid_argument("Суммы не могут быть отрицательными");
+        throw std::invalid_argument("РЎСѓРјРјС‹ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹РјРё");
     }
 }
 
@@ -12,24 +12,24 @@ void supplier::input()
     try {
         common::input();
 
-        std::cout << "Введите сумму контракта: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РєРѕРЅС‚СЂР°РєС‚Р°: ";
         std::cin >> contract_amount;
         if (contract_amount < 0) {
-            throw std::invalid_argument("Сумма контракта не может быть отрицательной");
+            throw std::invalid_argument("РЎСѓРјРјР° РєРѕРЅС‚СЂР°РєС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
-        std::cout << "Введите оплаченную сумму: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ РѕРїР»Р°С‡РµРЅРЅСѓСЋ СЃСѓРјРјСѓ: ";
         std::cin >> paid_amount;
         if (paid_amount < 0) {
-            throw std::invalid_argument("Оплаченная сумма не может быть отрицательной");
+            throw std::invalid_argument("РћРїР»Р°С‡РµРЅРЅР°СЏ СЃСѓРјРјР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
         if (paid_amount > contract_amount) {
-            throw std::invalid_argument("Оплаченная сумма не может превышать сумму контракта");
+            throw std::invalid_argument("РћРїР»Р°С‡РµРЅРЅР°СЏ СЃСѓРјРјР° РЅРµ РјРѕР¶РµС‚ РїСЂРµРІС‹С€Р°С‚СЊ СЃСѓРјРјСѓ РєРѕРЅС‚СЂР°РєС‚Р°");
         }
     }
     catch (const std::exception& e) {
-        std::cerr << "Ошибка ввода: " << e.what() << std::endl;
+        std::cerr << "РћС€РёР±РєР° РІРІРѕРґР°: " << e.what() << std::endl;
         throw;
     }
 }
@@ -37,9 +37,9 @@ void supplier::input()
 void supplier::output() const
 {
     common::output();
-    std::cout << ", Контракт: " << contract_amount
-        << ", Оплачено: " << paid_amount
-        << ", Сальдо: " << get_balance() << "\n";
+    std::cout << ", РљРѕРЅС‚СЂР°РєС‚: " << contract_amount
+        << ", РћРїР»Р°С‡РµРЅРѕ: " << paid_amount
+        << ", РЎР°Р»СЊРґРѕ: " << get_balance() << "\n";
 }
 
 double supplier::get_balance() const
@@ -67,22 +67,22 @@ std::istream& operator>>(std::istream& is, supplier& obj)
 
         is >> static_cast<common&>(obj);
 
-        std::cout << "Введите сумму контракта: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РєРѕРЅС‚СЂР°РєС‚Р°: ";
         is >> obj.contract_amount;
         if (is.fail()) {
-            throw std::invalid_argument("Некорректный формат суммы контракта");
+            throw std::invalid_argument("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ СЃСѓРјРјС‹ РєРѕРЅС‚СЂР°РєС‚Р°");
         }
         if (obj.contract_amount < 0) {
-            throw std::invalid_argument("Сумма контракта не может быть отрицательной");
+            throw std::invalid_argument("РЎСѓРјРјР° РєРѕРЅС‚СЂР°РєС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
-        std::cout << "Введите оплаченную сумму: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ РѕРїР»Р°С‡РµРЅРЅСѓСЋ СЃСѓРјРјСѓ: ";
         is >> obj.paid_amount;
         if (is.fail()) {
-            throw std::invalid_argument("Некорректный формат оплаченной суммы");
+            throw std::invalid_argument("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ РѕРїР»Р°С‡РµРЅРЅРѕР№ СЃСѓРјРјС‹");
         }
         if (obj.paid_amount < 0) {
-            throw std::invalid_argument("Оплаченная сумма не может быть отрицательной");
+            throw std::invalid_argument("РћРїР»Р°С‡РµРЅРЅР°СЏ СЃСѓРјРјР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№");
         }
 
         is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

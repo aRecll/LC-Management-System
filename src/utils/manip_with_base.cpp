@@ -54,7 +54,7 @@ void search_suppliers_by_name_dynamic(const vector<unique_ptr<supplier>>& suppli
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipments) {
@@ -124,7 +124,7 @@ void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipme
         }
     }
     catch (const exception& e) {
-        // Очищаем буфер после ошибки
+        
         cin.clear();
         cin.ignore((numeric_limits<streamsize>::max)(), '\n');
 
@@ -136,7 +136,7 @@ void search_shipments_by_date_dynamic(const vector<unique_ptr<shipment>>& shipme
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 void demo_operators() {
@@ -155,8 +155,7 @@ void demo_operators() {
         supplier s1;
         cin >> s1;
 
-        // Очищаем буфер между вводами
-        //cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+        
 
         set_color(BRIGHT_CYAN);
         cout << "\n=== Демонстрация оператора >> для shipment ===" << endl;
@@ -198,7 +197,7 @@ void demo_operators() {
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 
@@ -280,7 +279,7 @@ void search_by_company_name(const vector<unique_ptr<supplier>>& suppliers,
     set_color(BRIGHT_YELLOW);
     cout << "Нажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 
@@ -415,7 +414,7 @@ void add_new_suppliers(vector<unique_ptr<supplier>>& suppliers) {
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
@@ -518,7 +517,7 @@ void add_new_shipments(vector<unique_ptr<shipment>>& shipments) {
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 
@@ -534,7 +533,7 @@ void perform_sorting(vector<unique_ptr<supplier>>& suppliers,
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
 
 void save_all_data(const vector<unique_ptr<supplier>>& suppliers,
@@ -548,5 +547,5 @@ void save_all_data(const vector<unique_ptr<supplier>>& suppliers,
     set_color(BRIGHT_YELLOW);
     cout << "\nНажмите любую клавишу для продолжения...";
     reset_color();
-    _getch();
+    getch_();
 }
